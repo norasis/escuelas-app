@@ -123,6 +123,7 @@ class ImagenController extends Controller
 
         }
 
+        //muestra las fotos de idescuela
 
         $datos['imagenes'] = DB::table('estudiantes')
         ->whereNull('deleted_at')

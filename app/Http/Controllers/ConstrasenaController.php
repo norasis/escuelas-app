@@ -114,6 +114,7 @@ class ConstrasenaController extends Controller
         $datosusuario = request()->except(['_token','_method']);
         $datosusuario['password'] = Hash::make($datosusuario['password']);
 
+        //hola
        
 
         User::where('id', '=', $id)->update($datosusuario);
