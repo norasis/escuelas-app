@@ -49,8 +49,7 @@
 
                   <br>
                   <label form="telefono"> Telefono </label>
-                  <input class="form-control" type="text" name="telefono" value="{{ $estudiantes->telefono }}" id="telefono" size="60"
-                     required />
+                  <input class="form-control" type="tel" name="telefono" id="telefono"  value="{{ $estudiantes->telefono }}"  pattern="[0-9]{10}" maxlength="10" size="60" required />
 
                   <br>
                   <label form="correo"> Correo </label>

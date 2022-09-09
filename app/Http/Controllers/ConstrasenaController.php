@@ -11,6 +11,10 @@ use App\Models\Escuela;
 use App\Models\constrasena;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Validator;
+use Illuminate\Support\Facades\Auth;
+
+
 
 
 use App\Models\User;
@@ -120,10 +124,14 @@ class ConstrasenaController extends Controller
         User::where('id', '=', $id)->update($datosusuario);
 
         $datos['estudiantes'] = DB::table('estudiantes')
-        ->whereNull('deleted_at')
-        ->get();
-    
-        return view('estudiantes.index',$datos);
+            ->whereNull('deleted_at')
+            ->where('idescuela', Auth::user()->idescuela)
+            ->paginate(50);
+       
+
+
+        return view('estudiantes.index', $datos);
+ 
     }
 
     /**

@@ -18,9 +18,9 @@
                <div class="col">
                   <br>
                   <label form="Escuela"> Escuela </label>
-                  <select class="form-control" name="idescuela" id="idescuela">
+                  <select class="form-control" name="idescuela" id="idescuela"  type="idescuela" required >
                      @foreach ($escuelas as $escuela)
-                        <option value="{{ $escuela['nombre'] }}">{{ $escuela['id'] . '-' . $escuela['nombre'] }}</option>
+                        <option value="{{ $escuela['id'] }}">{{ $escuela['id'] . '-' . $escuela['nombre'] }}</option>
                      @endforeach
                   </select>
 
@@ -54,6 +54,11 @@
 
                   <br>
                   <br>
+                  <button class="btn btn-primary" type="button" onclick="mostrarContrasena()">Mostrar/Ocultar Contraseña</button>
+
+                  <br>
+                  <br>
+                  <br>
                   <input type="submit" value="Guardar Datos" class="btn btn-primary form-control" />
                </div>
             </div>
@@ -63,3 +68,14 @@
 
     </div>
 @endsection
+
+<script>
+  function mostrarContrasena(){
+      var tipo = document.getElementById("password");
+      if(tipo.type == "password"){
+          tipo.type = "text";
+      }else{
+          tipo.type = "password";
+      }
+  }
+</script>

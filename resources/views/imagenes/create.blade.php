@@ -3,6 +3,10 @@
 @section('content')
     <div class="card-body">
 
+    
+        <h4>Verifique que no haya CURP repetidos</h4>
+       
+
         <div class="form-group">
 
 

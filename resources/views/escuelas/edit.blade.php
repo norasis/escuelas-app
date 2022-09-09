@@ -28,10 +28,12 @@
                 <div class="col">
                     <br>
                     <label form="nivel"> Nivel </label>
-                    <select class="form-control" name=" nivel" value="{{ $escuelas->nivel }}" id="nivel">
+                    <select class="form-control" name="nivel" id="nivel">
+                         <option>{{ $escuelas->nivel }}</option>
                         <option>Licenciatura</option>
                         <option>Bachillerato</option>
                     </select>
+                    
 
                     <br>
                     <br>

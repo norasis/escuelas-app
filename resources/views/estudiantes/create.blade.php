@@ -3,7 +3,8 @@
 @section('content')
     <div class="container">
         <h2>Registrar estudiante</h2>
-        <br>
+        <h4>Verifique que no haya CURP repetidos</h4>
+        
         <br>
         <h4>Registro de Padron de Estudiantes</h4>
         <form action="{{ url('/estudiantes') }}" method="POST" enctype="multipart/form-data">
@@ -82,7 +83,7 @@
 
                     <br>
                     <label form="telefono"> Telefono </label>
-                    <input class="form-control" type="text" name="telefono" id="telefono" size="60" required />
+                    <input class="form-control" type="tel" name="telefono" id="telefono" pattern="[0-9]{10}"  maxlength="10"  size="60" required />
 
                     <br>
                     <label form="correo"> Correo </label>
