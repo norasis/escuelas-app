@@ -13,6 +13,8 @@
              
                     <label form = "Escuela"> Escuela </label> 
                     <select name="idescuela"  id="idescuela">
+                       
+                        <option value="{{ $user->idescuela }}">{{$user->idescuela}}</option>
                          @foreach($escuelas as $escuela) 
                               <option value="{{ $escuela['id']}}">{{$escuela['id'].'-'.$escuela['nombre']}}</option>
                          @endforeach

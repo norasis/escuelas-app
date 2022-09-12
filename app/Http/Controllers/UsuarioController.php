@@ -8,6 +8,10 @@ use App\Models\Escuela;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Pagination\Paginator;
+
+use Illuminate\Support\Facades\Auth;
+
 
 use App\Models\User;
 
@@ -47,7 +51,8 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        $escuelas = Escuela::all();
+       $escuelas = Escuela::all();
+
        
         return view('usuario.create',compact('escuelas'));
     }
@@ -59,14 +64,17 @@ class UsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
     {
+
+       
     
         $campos = [
-            'email'=> 'unique:users,email',
+            'username'=> 'unique:users,username',
       ];
 
       $mensaje = [
-          'unique' => 'El campo EMAIL no puede estar repetido',    
+          'unique' => 'El campo USUARIO no puede estar repetido',    
       ];
 
       $this->validate($request,$campos,$mensaje);
@@ -79,9 +87,10 @@ class UsuarioController extends Controller
         User::insert($datosusuario);
 
         $datos['estudiantes'] = DB::table('estudiantes')
-        ->whereNull('deleted_at')
-        ->get();
-    
+            ->whereNull('deleted_at')
+            ->where('idescuela', Auth::user()->idescuela)
+            ->paginate(50);
+       
         return view('estudiantes.index',$datos);
     }
 
@@ -104,8 +113,8 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-
-        $escuelas = Escuela::all();
+ 
+       $escuelas = Escuela::all();
        $user = User::findOrFail($id);
        return view('usuario.edit',compact('user','escuelas'));
     }

@@ -78,7 +78,7 @@ class ImagenController extends Controller
                 
                 $extension = $imagen->getClientOriginalExtension();
 
-                $rutacarpeta  ='public/media/img/';
+                $rutacarpeta  ='storage/media/img/';
 
           
 

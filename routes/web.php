@@ -25,6 +25,12 @@ Route::get('/', function () {
  
 });
 
+Route::get('/aviso-de-privacidad', function () {
+  return view('privacidad');
+
+});
+
+
 
 
 Route::resource('usuario',UsuarioController::class);

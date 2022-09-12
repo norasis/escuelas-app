@@ -48,10 +48,17 @@
                   <input class="form-control" id="password" type="password" name="password" required>
 
                  
+                
+
+            
                   <br>
+                  <br>
+                  <button class="btn btn-primary" type="button" onclick="mostrarContrasena()">Mostrar/Ocultar Contraseña</button>
+
 
                     <br>
-                  
+                    <br>
+                    <br>
                     <input class="form-control btn btn-primary" type="submit" value="Cambiar Contraseña" />
                 </div>
             </div>
@@ -60,3 +67,15 @@
         </form>
     </div>
 @endsection
+
+
+<script>
+  function mostrarContrasena(){
+      var tipo = document.getElementById("password");
+      if(tipo.type == "password"){
+          tipo.type = "text";
+      }else{
+          tipo.type = "password";
+      }
+  }
+</script>

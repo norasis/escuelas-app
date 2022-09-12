@@ -15,6 +15,8 @@ use App\Http\Controllers\Validator;
 
 use Illuminate\Pagination\Paginator;
 
+use Illuminate\Support\Collection;
+
 Use Session;
 
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +47,7 @@ class EstudianteController extends Controller
             ->whereNull('deleted_at')
             ->where('idescuela', Auth::user()->idescuela)
             ->paginate(50);
-       
+           
 
 
         return view('estudiantes.index', $datos);
@@ -135,11 +137,15 @@ class EstudianteController extends Controller
 
                 $fotoma = new Imagen();
     
-                $name = $imagen->getClientOriginalName();
+              
+
+                $name = $datosestudiantes['curp'];
                 
                 $extension = $imagen->getClientOriginalExtension();
+
+                 $name = $name.'.'.$extension;
     
-                $rutacarpeta  ='public/media/img/';
+                $rutacarpeta  ='storage/media/img/';
     
     
                 $imagen->move($rutacarpeta,$name);
@@ -184,10 +190,10 @@ class EstudianteController extends Controller
      */
     public function edit($id)
     {
-        $escuelas = Escuela::all();
+       
+      
         $estudiantes = Estudiante::findOrFail($id);
-
-        return view('estudiantes.edit', compact('estudiantes', 'escuelas'));
+        return view('estudiantes.edit', compact('estudiantes'));
     }
 
     /**
@@ -207,11 +213,14 @@ class EstudianteController extends Controller
 
             $fotoma = new Imagen();
 
-            $name = $imagen->getClientOriginalName();
-            
+
+            $name = $datosEstudiante['curp'];
+                
             $extension = $imagen->getClientOriginalExtension();
 
-            $rutacarpeta  ='public/media/img/';
+            $name = $name.'.'.$extension;
+
+            $rutacarpeta  ='storage/media/img/';
 
 
             $imagen->move($rutacarpeta,$name);

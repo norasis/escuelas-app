@@ -62,13 +62,15 @@
                             <button type="submit" class="btn btn-primary">
                                 Iniciar sesión
                             </button>
+                            <a href="{{ url('/aviso-de-privacidad') }}">
+                                 Terminos y Condiciones
+                            </a>
     
-                            @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    ¿Olvidaste tu contraseña?
-                                </a>
-                            @endif
                         </div>
+
+                      
+                      
+
                     </div>
                 </form>
             </div>

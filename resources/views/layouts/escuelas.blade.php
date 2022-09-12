@@ -39,7 +39,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        @if (Auth::user()->tipo == 'ADMINISTRADOR')
+
+                    @if (Auth::user()->tipo == 'ADMINISTRADOR')
+                       
                             <li class="nav-item">
                                 <a actv="usuario" class="nav-link" href="{{ url('/usuario/') }}">{{ __('Usuarios') }}</a>
                             </li>
@@ -54,11 +56,9 @@
                                 <a actv="imagenes" class="nav-link" href="{{ url('/imagenes/') }}">{{ __('Imagenes') }}</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a actv="contrasenas" class="nav-link" href="{{ url('/contrasenas/') }}">{{ __('CambiarContraseña') }}</a>
-                            </li>
-
-                        @else
+                           
+                    @else  
+                  
                           
 
                             <li class="nav-item">
@@ -69,11 +69,10 @@
                                 <a actv="imagenes" class="nav-link" href="{{ url('/imagenes/') }}">{{ __('Imagenes') }}</a>
                             </li>
                             
-                            <li class="nav-item">
-                                <a actv="contrasenas" class="nav-link" href="{{ url('/contrasenas/') }}">{{ __('CambiarContraseña') }}</a>
-                            </li>
+                    @endif     
 
-                        @endif
+                  
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -97,6 +96,10 @@
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         Cerrar sesión
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ url('/contrasenas/') }}">
+                                        Cambiar Contraseña
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

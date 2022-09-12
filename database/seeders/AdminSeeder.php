@@ -18,6 +18,7 @@ class AdminSeeder extends Seeder
     public function run()
     {
         User::create([
+            'username' => 'Admin',
             'idescuela' => '0',
             'name' => 'Admin',
             'email' => 'test@lapaz.gob.mx',

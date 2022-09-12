@@ -46,10 +46,10 @@
         <input type="Submit"
             onclick="return confirm('Esta seguro que desea eliminar el estudiante?')" value="Borrar"
             class="btn btn-warning">
-
+        </form>
             @endforeach
 
-    </form>
+    
 </th>
 
 </tr>
@@ -58,13 +58,14 @@
 
             </tbody>
         </table>
-
+        
         <div class="span7 center">
                      {{ $estudiantes->links() }}   
         </div>  
-      
+
       
     </div>
-    
+
+      
 
 @endsection
